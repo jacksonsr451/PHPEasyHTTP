@@ -1,0 +1,16 @@
+{
+    "name": "jacksonsr45/php-easy-http",
+    "version": "1.0.0",
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "PhpEasyHttp\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "jacksonsr451",
+        "email": "jackson.severino.rocha@escola.pr.gov.br"
+    }],
+    "require": {}
+}
