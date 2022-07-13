@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Message;
+namespace PhpEasyHttp\Http\Message\Interfaces;
 
 interface RequestInterface extends MessageInterface
 {
