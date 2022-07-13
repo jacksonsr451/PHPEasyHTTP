@@ -1,6 +1,7 @@
 {
     "name": "jacksonsr45/php-easy-http",
-    "version": "v1.0-alpha",
+    "version": "1.0.1",
+    "type": "library",
     "prefer-stable": true,
     "minimum-stability": "dev",
     "autoload": {
