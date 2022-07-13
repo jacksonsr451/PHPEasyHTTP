@@ -12,12 +12,12 @@ class Message implements MessageInterface
     private mixed $headers = [];
     private StreamInterface $body;
     
-	function getProtocolVersion(): string 
+	public function getProtocolVersion(): string 
     {
         return $this->protocol;
 	}
 	
-	function withProtocolVersion($version): self
+	public function withProtocolVersion($version): self
     {
         if ($this->protocol === $version) return $this;
 
@@ -26,30 +26,30 @@ class Message implements MessageInterface
         return $clone;
 	}
 	
-	function getHeaders(): mixed 
+	public function getHeaders(): mixed 
     {
         return $this->headers;
 	}
 	
-	function hasHeader($name): bool 
+	public function hasHeader($name): bool 
     {
         $name = strtolower($name);
         return isset($this->headers[$name]);
 	}
 	
-	function getHeader($name): mixed 
+	public function getHeader($name): mixed 
     {
         $name = strtolower($name);
         if (! $this->hasHeader($name)) return [];
         return $this->headers[$name];
 	}
 	
-	function getHeaderLine($name): string 
+	public function getHeaderLine($name): string 
     {
         return implode(',', $this->getHeader($name));
 	}
 	
-	function withHeader($name, $value): self 
+	public function withHeader($name, $value): self 
     {
         if (! is_string($name)) throw new InvalidArgumentException("Argument {$name} must be a string!");
         if (! is_string($name) && ! is_array($value)) {
@@ -62,7 +62,7 @@ class Message implements MessageInterface
         return $clone;
 	}
 	
-	function withAddedHeader($name, $value): self  
+	public function withAddedHeader($name, $value): self  
     {
         if (! is_string($name)) throw new InvalidArgumentException("Argument {$name} must be a string!");
         if (! is_string($name) && ! is_array($value)) {
@@ -75,19 +75,19 @@ class Message implements MessageInterface
         return $clone;
 	}
 	
-	function withoutHeader($name): self 
+	public function withoutHeader($name): self 
     {
         $clone = clone $this;
         unset($clone->headers[$name]);
         return $clone;
 	}
 	
-	function getBody(): StreamInterface 
+	public function getBody(): StreamInterface 
     {
         return $this->body;
 	}
 	
-	function withBody(StreamInterface $body): self
+	public function withBody(StreamInterface $body): self
     {
         $clone = clone $this;
         $clone->body = $body;
