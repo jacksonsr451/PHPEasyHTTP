@@ -42,12 +42,12 @@ class Uri implements UriInterface
         $this->port = $port;
     }
 
-	function getScheme(): string 
+	public function getScheme(): string 
     {
         return $this->scheme;
 	}
 	
-	function getAuthority(): string 
+	public function getAuthority(): string 
     {
         $authority = $this->host;
         if ($this->getUserInfo() !== '') {
@@ -61,7 +61,7 @@ class Uri implements UriInterface
         return $authority;
 	}
 	
-	function getUserInfo(): string 
+	public function getUserInfo(): string 
     {
         $userInfo = $this->user;
         if ($this->password !== null && ! empty($this->password)) {
@@ -70,33 +70,33 @@ class Uri implements UriInterface
         return $userInfo;
 	}
 	
-	function getHost(): string 
+	public function getHost(): string 
     {
         return $this->host;
 	}
 	
-	function getPort(): null|int 
+	public function getPort(): null|int 
     {
         return $this->port;
 	}
 	
-	function getPath(): string 
+	public function getPath(): string 
     {
         $path = trim($this->path, '/');
         return '/' . $this->path;
 	}
 	
-	function getQuery(): string 
+	public function getQuery(): string 
     {
         return $this->query;
 	}
 	
-	function getFragment(): string 
+	public function getFragment(): string 
     {
         return $this->fragment;
 	}
 	
-	function withScheme($scheme): self 
+	public function withScheme($scheme): self 
     {
         if ($this->scheme === $scheme) {
             return $this;
@@ -111,7 +111,7 @@ class Uri implements UriInterface
         return $clone;
 	}
 	
-	function withUserInfo($user, $password = null): self
+	public function withUserInfo($user, $password = null): self
     {
         $clone = clone $this;
         $clone->user = $user;
@@ -119,7 +119,7 @@ class Uri implements UriInterface
         return $clone;
 	}
 	
-	function withHost($host): self 
+	public function withHost($host): self 
     {
         if (! is_string($host)) {
             throw new InvalidArgumentException('Invalid host!');
@@ -134,7 +134,7 @@ class Uri implements UriInterface
         return $clone;
 	}
 	
-	function withPort($port): self 
+	public function withPort($port): self 
     {
         if ($this->port === $port) {
             return $this;
@@ -145,7 +145,7 @@ class Uri implements UriInterface
         return $clone;
 	}
 	
-	function withPath($path): self 
+	public function withPath($path): self 
     {
         if (! is_string($path)) {
             throw new InvalidArgumentException("Invalid path");
@@ -160,7 +160,7 @@ class Uri implements UriInterface
         return $clone;
 	}
 	
-	function withQuery($query): self 
+	public function withQuery($query): self 
     {
         if (! is_string($query)) {
             throw new InvalidArgumentException("Invalid query");
@@ -175,7 +175,7 @@ class Uri implements UriInterface
         return $clone;
 	}
 	
-	function withFragment($fragment): self 
+	public function withFragment($fragment): self 
     {
         if ($fragment === $this->fragment) {
             return $this;
@@ -186,7 +186,7 @@ class Uri implements UriInterface
         return $clone;
 	}
 	
-	function __toString(): string 
+	public function __toString(): string 
     {
         $query = '';
         if ($this->query !== '') $query = '?' . $this->query;
