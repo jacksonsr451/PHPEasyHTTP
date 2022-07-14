@@ -93,4 +93,19 @@ class Message implements MessageInterface
         $clone->body = $body;
         return $clone;
 	}
+
+    public function setHeaders(array $headers): void
+    {
+        foreach ($headers as $key => $value) {
+            $this->headers[strtolower($key)] = $value;
+            if (is_string($value)) $this->headers[strtolower($key)] = explode(', ', $value);
+        }
+    }
+
+    public function setBody($body): void
+    {
+        if ($body instanceof StreamInterface) $body = new Stream();
+        $this->body = $body;
+    }
+
 }

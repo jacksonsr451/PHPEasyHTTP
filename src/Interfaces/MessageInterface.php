@@ -27,4 +27,8 @@ interface MessageInterface
 
     public function withBody(StreamInterface $body): self;
 
+    public function setHeaders(array $headers): void;
+
+    public function setBody($body): void;
+
 }
