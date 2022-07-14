@@ -14,6 +14,9 @@ class ServerRequest implements ServerRequestInterface
 	private array $servers;
 	private array $cookies;
 	private array $queries;
+	private array $uploadFiles;
+	private null|array|object $parsedBody;
+	private mixed $attributes;
 
 	public function getServerParams(): array
 	{
@@ -49,17 +52,23 @@ class ServerRequest implements ServerRequestInterface
 
 	public function getUploadedFiles(): array
 	{
-		
+		return $this->uploadFiles;
 	}
 
-	public function withUploadedFiles(array $uploadedFiles): ServerRequestInterface
+	public function withUploadedFiles(array $uploadedFiles): self
 	{
-		
+		$clone = clone $this;
+		$clone->uploadFiles = $uploadedFiles;
+		return $clone;
 	}
 
 	public function getParsedBody(): null|array|object
 	{
+		if ($this->parsedBody !== null) return $this->parsedBody;
 		if ($this->inPost()) return $_POST;
+		if ($this->inHeader('content-type', 'application/json')) {
+			return json_decode($this->getBody());
+		}
 		return $this->body;
 	}
 
@@ -73,18 +82,34 @@ class ServerRequest implements ServerRequestInterface
 		return false;
 	}
 
-	public function withParsedBody($data): ServerRequestInterface
+	public function withParsedBody($data): self
 	{
-		
+		$clone = clone $this;
+		$clone->parsedBody = $data;
+		return $clone;
 	}
 
 	public function getAttributes(): mixed
 	{
-		
+		return $this->attributes;
 	}
 
 	public function getAttribute($name, $default = null): mixed
 	{
-		
+		return $this->attributes[$name] ?? $default;
+	}
+
+	public function withAttribute($name, $value): self
+	{
+		$clone = clone $this;
+		$clone->attributes[$name] = $value;
+		return $clone;
+	}
+
+	public function withoutAttribute($name): self
+	{
+		$clone = clone $this;
+		unset($clone->attributes[$name]);
+		return $clone;
 	}
 }

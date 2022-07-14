@@ -107,4 +107,10 @@ trait MessageTrait
         if ($body instanceof StreamInterface) $body = new Stream();
         $this->body = $body;
     }
+
+    protected function inHeader(string $name, string $value): bool 
+    {
+        $headers = $this->getHeader($name);
+        return in_array($value, $headers);
+    }
 }
