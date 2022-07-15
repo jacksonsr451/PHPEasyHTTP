@@ -1,22 +1,43 @@
 <?php 
 
-namespace PhpEasyHttp\HTTP\Message;
+namespace PhpEasyHttp\Http\Message;
 
 use PhpEasyHttp\Http\Message\Interfaces\ServerRequestInterface;
-use PhpEasyHttp\HTTP\Message\Traits\MessageTrait;
-use PhpEasyHttp\HTTP\Message\Traits\RequestTrait;
+use PhpEasyHttp\Http\Message\Traits\MessageTrait;
+use PhpEasyHttp\Http\Message\Traits\RequestTrait;
 
 class ServerRequest implements ServerRequestInterface
 {
 	use MessageTrait;
     use RequestTrait;
-
+	
 	private array $servers;
 	private array $cookies;
 	private array $queries;
 	private array $uploadFiles;
 	private null|array|object $parsedBody;
 	private mixed $attributes;
+
+	public function __construct(
+		string $method,
+		$uri,
+		array $headers = [],
+		array $servers = [],
+		array $cookies = [],
+		array $attributes = [],
+		$body = null,
+		string $version = '1.1'
+	)
+	{
+		$this->method = $method;
+		$this->protocol = $version;
+		$this->servers = $servers;
+		$this->cookies = $cookies;
+		$this->attributes = $attributes;
+		$this->setUri($uri);
+		$this->setHeaders($headers);
+		$this->setBody($body);
+	}
 
 	public function getServerParams(): array
 	{

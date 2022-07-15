@@ -1,6 +1,6 @@
 <?php 
 
-namespace PhpEasyHttp\HTTP\Message;
+namespace PhpEasyHttp\Http\Message;
 
 use InvalidArgumentException;
 use PhpEasyHttp\Http\Message\Interfaces\ResponseInterface;

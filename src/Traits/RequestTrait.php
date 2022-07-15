@@ -1,16 +1,16 @@
 <?php 
 
-namespace PhpEasyHttp\HTTP\Message\Traits;
+namespace PhpEasyHttp\Http\Message\Traits;
 
 use InvalidArgumentException;
+use PhpEasyHttp\Http\Message\Uri;
 use PhpEasyHttp\Http\Message\Interfaces\UriInterface;
-use PhpEasyHttp\HTTP\Message\Uri;
 
 trait RequestTrait 
 {
     protected string $requestTarget;
     protected string $method;
-    protected UriInterface $uri;
+    protected $uri;
 
     protected array $validMethods = [
         'post', 'get', 'delete', 'put', 'patch', 'head', 'options'

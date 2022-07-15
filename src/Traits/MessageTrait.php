@@ -1,6 +1,6 @@
 <?php 
 
-namespace PhpEasyHttp\HTTP\Message\Traits;
+namespace PhpEasyHttp\Http\Message\Traits;
 
 use InvalidArgumentException;
 use PhpEasyHttp\Http\Message\Interfaces\StreamInterface;
@@ -104,7 +104,7 @@ trait MessageTrait
 
     public function setBody($body): void
     {
-        if ($body instanceof StreamInterface) $body = new Stream();
+        if (! ($body instanceof StreamInterface)) $body = new Stream();
         $this->body = $body;
     }
 
