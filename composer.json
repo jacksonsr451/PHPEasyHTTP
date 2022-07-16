@@ -19,12 +19,15 @@
         "php": ">=7.4"
     },
     "repositories": [{
-            "type": "composer",
-            "url": "https://packagist.org/packages/jacksonsr451/php-easy-http"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/jacksonsr451/php-easy-http"
+        "type": "package",
+        "package": {
+            "name": "jacksonsr451/php-easy-http",
+            "version": "1.2.0",
+            "source": {
+                "type": "vcs",
+                "url": "https://github.com/jacksonsr451/php-easy-http.git",
+                "reference": ""
+            }
         }
-    ]
+    }]
 }
