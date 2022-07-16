@@ -2,6 +2,7 @@
     "name": "jacksonsr451/php-easy-http",
     "version": "1.1.0",
     "type": "library",
+    "license": "MIT",
     "prefer-stable": true,
     "minimum-stability": "dev",
     "autoload": {
