@@ -7,9 +7,9 @@ use PhpEasyHttp\Http\Message\Interfaces\StreamInterface;
 use PhpEasyHttp\Http\Message\Stream;
 
 trait MessageTrait
-{
+{ 
     private string $protocol = "1.1";
-    private mixed $headers = [];
+    private array $headers = [];
     private StreamInterface $body;
     
     public function getProtocolVersion(): string
@@ -28,7 +28,7 @@ trait MessageTrait
         return $clone;
     }
     
-    public function getHeaders(): mixed
+    public function getHeaders(): array
     {
         return $this->headers;
     }
@@ -39,7 +39,7 @@ trait MessageTrait
         return isset($this->headers[$name]);
     }
     
-    public function getHeader($name): mixed
+    public function getHeader($name): array
     {
         $name = strtolower($name);
         if (! $this->hasHeader($name)) {

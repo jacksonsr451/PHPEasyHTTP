@@ -16,7 +16,7 @@ class ServerRequest implements ServerRequestInterface
     private array $queries;
     private array $uploadFiles;
     private null|array|object $parsedBody;
-    private mixed $attributes;
+    private array $attributes;
 
     public function __construct(
         string $method,
@@ -117,12 +117,12 @@ class ServerRequest implements ServerRequestInterface
         return $clone;
     }
 
-    public function getAttributes(): mixed
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
 
-    public function getAttribute($name, $default = null): mixed
+    public function getAttribute($name, $default = null): null|array
     {
         return $this->attributes[$name] ?? $default;
     }

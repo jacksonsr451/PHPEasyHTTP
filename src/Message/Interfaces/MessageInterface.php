@@ -9,11 +9,11 @@ interface MessageInterface
 
     public function withProtocolVersion($version): self;
 
-    public function getHeaders(): mixed;
+    public function getHeaders(): array;
 
     public function hasHeader($name): bool;
 
-    public function getHeader($name): mixed;
+    public function getHeader($name): array;
 
     public function getHeaderLine($name): string;
 

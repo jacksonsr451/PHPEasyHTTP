@@ -9,7 +9,7 @@ use Throwable;
 
 class Stream implements StreamInterface
 {
-    private mixed $stream;
+    private $stream;
     private int|null $size;
     private null|bool $seekable;
     private null|bool $writable;
@@ -50,7 +50,7 @@ class Stream implements StreamInterface
         $this->detach();
     }
     
-    public function detach(): mixed
+    public function detach()
     {
         $resource = $this->stream;
         unset($this->stream);
@@ -175,7 +175,7 @@ class Stream implements StreamInterface
         return $contents;
     }
     
-    public function getMetadata($key = null): mixed
+    public function getMetadata($key = null): null|array
     {
         if ($this->stream === null) {
             return $key === null ? null : [];

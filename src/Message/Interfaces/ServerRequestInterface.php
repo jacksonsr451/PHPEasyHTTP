@@ -22,9 +22,9 @@ interface ServerRequestInterface extends RequestInterface
 
     public function withParsedBody($data): self;
 
-    public function getAttributes(): mixed;
+    public function getAttributes(): array;
 
-    public function getAttribute($name, $default = null): mixed;
+    public function getAttribute($name, $default = null): null|array;
 
     public function withAttribute($name, $value): self;
 

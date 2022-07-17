@@ -8,7 +8,7 @@ interface StreamInterface
 
     public function close(): void;
 
-    public function detach(): mixed;
+    public function detach();
 
     public function getSize(): int|null;
 
@@ -32,5 +32,5 @@ interface StreamInterface
 
     public function getContents(): string;
 
-    public function getMetadata($key = null): mixed;
+    public function getMetadata($key = null): null|array;
 }
