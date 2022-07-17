@@ -18,7 +18,7 @@ class CsrfTokenMiddleware implements MiddlewareInterface
     private string $sessionKey;
     private string $formKey;
 
-    public function __construct(array|ArrayAccess &$session, int $limit = 50, string $sessionKey = 'csrf_tokens', string $formKey = '_csrf')
+    public function __construct(&$session, int $limit = 50, string $sessionKey = 'csrf_tokens', string $formKey = '_csrf')
     {
         $this->validateSession($session);
         $this->session = $session;
@@ -50,7 +50,7 @@ class CsrfTokenMiddleware implements MiddlewareInterface
         return $token;
     }
 
-    public function validateSession(array|ArrayAccess $session): void
+    public function validateSession($session): void
     {
         if (! is_array($session) && ! $session instanceof ArrayAccess) {
             throw new TypeError('Session is not in array!');

@@ -36,7 +36,7 @@ class Uri implements UriInterface
         $this->fragment = $uriParts['fragments'] ?? '';
     }
 
-    private function setPort(null|int $port): void
+    private function setPort($port): void
     {
         if (self::SCHEME_PORTS[$this->scheme] === $port) {
             $this->port = null;
