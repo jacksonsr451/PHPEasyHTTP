@@ -6,6 +6,11 @@
     "license": "MIT",
     "prefer-stable": true,
     "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "PhpEasyHttp\\Http\\": "src/"
+        }
+    },
     "authors": [{
         "name": "jacksonsr451",
         "email": "jackson.severino.rocha@escola.pr.gov.br"
