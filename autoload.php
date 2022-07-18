@@ -1,10 +1,10 @@
 <?php
 
-namespace PhpEasyHttp;
+namespace PhpEasyHttp\Http;
 
 use Composer\Autoload\ClassLoader;
 
-if (class_exists('PhpEasyHttp\Autoload', false) === false) {
+if (class_exists('PhpEasyHttp\Http\Autoload', false) === false) {
     class Autoload
     {
 
